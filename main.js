@@ -3,6 +3,12 @@ const ul = document.querySelector('ul')
 const taskNumber = document.querySelector('h1 span')
 const input = document.querySelector('input')
 
+const removeTask = e => {
+	e.target.parentNode.remove()
+
+	taskNumber.textContent = document.querySelectorAll('.task').length;
+}
+
 const addTask = e => {
 	e.preventDefault()
 
@@ -17,6 +23,9 @@ const addTask = e => {
 	taskNumber.textContent = document.querySelectorAll('.task').length;
 
 	input.value = ''
+
+	task.querySelector('button').addEventListener('click', removeTask)
+
 }
 
 form.addEventListener('submit', addTask)
